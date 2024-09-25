@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Player",
+  "description": "A player attributes",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "Unknown",
+      "description": "Name of the player",
+      "pii": true
+    },
+    "hitPoints": {
+      "type": "integer",
+      "default": 100,
+      "description": "Hit points of the player"
+    },
+    "callingType": {
+      "type": "string",
+      "enum": ["warrior", "monk", "wizard", "druid"],
+      "description": "Calling selection of the player"
+    }
+  },
+  "additionalProperties": false
+}

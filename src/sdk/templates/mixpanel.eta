@@ -1,0 +1,14 @@
+<% data.types.forEach(function(type){ %>
+
+<%_ const _lowerCaseTypeName = data.helpers.startLow(type.typeName); _%>
+<%_ const _piiRawArray = data.helpers.rawStringArray(type.piiAttributes); _%>
+
+export const track<%= type.typeName %> = (<%= _lowerCaseTypeName %>: <%= type.typeName %>) => {
+    Object.keys(<%= _lowerCaseTypeName %>).forEach(attribute => {
+        if(<%~ _piiRawArray %>.includes(attribute)){
+            <%= _lowerCaseTypeName %>[attribute] = "***";
+        }
+    });
+    mixpanel.track("<%= type.typeName %>", <%= _lowerCaseTypeName %>)
+}
+<% }) %>
